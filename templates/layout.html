@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <!-- css for this page -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css')}}">
+
+        <!-- icons for this page -->
+        <script src="https://kit.fontawesome.com/486a6f6d4c.js" crossorigin="anonymous"></script>
+
+        <!-- google fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Oswald:700&display=swap" rel="stylesheet">
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <title>{% block title %}{% endblock %}</title>
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <!-- nav-mobile-container -->
+        <div class="navigation-container">
+            <div class="button-container">
+                <button class="open-button navbar-toggler"><i class="fas fa-bars"></i></button>
+            </div>
+            <div class="brand-container">
+                 <a class="brand-name" href="{{ url_for('index')}}">SeatCheck</a>
+            </div>
+        </div>
+        <div class="navigation-popup shadow-lg">
+            <div class="button-close-container">
+                <button class="close-button navbar-toggler"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="link-container">
+                <a class="navigation-link" href="{{ url_for('account') }}">Account</a>
+                <hr class="line">
+                <a class="navigation-link" href="{{ url_for('book') }}">Book</a>
+                <hr class="line">
+                <a class="navigation-link" href="{{ url_for('my_flights') }}">Your Trips</a>
+                <hr class="line">
+                <a type="button" class="btn btn-sm btn-success login-button" href="{{ url_for('login') }}">Sign In</a>
+                <a type="button" class="btn btn-sm btn-info signup-button" href="{{ url_for('signup') }}">Create An Account</a>
+            </div>
+        </div>
+
+    {% block content %}{% endblock %}
+
+        <!-- javascript for this page -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/layout.js')}}"></script>
+    </body>
+</html>

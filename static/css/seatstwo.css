@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Neuton:400,700&display=swap');
+.navigation-container {
+    background-color: white !important;
+    height: 100px !important;
+}
+.title-of-page{
+    color: black;
+    font-family: 'Alata', sans-serif;
+    font-weight: bolder;
+    font-size: 25px;
+}
+.firstClass {
+    display: grid;
+    grid-template-columns: 20% 20% 25% 20% 20%;
+    grid-template-rows: auto;
+    width: 72%;
+    max-height: fit-content;
+    min-width: 10px;
+    margin-left: 50px;
+    margin-left: 50px;
+}
+.legend{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.economy{
+    display: grid;
+    grid-template-columns: 14.3% 14.3% 14.3% 20% 14.3% 14.3% 14.3%;
+    grid-template-rows: auto;
+    width: 72%;
+    margin-left: 50px;
+    margin-right: 50px;
+    max-height: fit-content;
+    min-width: 30px;
+}
+h1{
+    text-align: center;
+}
+.seatImage2{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    min-width: 50px;
+}
+.seatImage{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 50px;
+    grid-gap: 20px;
+    width: 50px;
+}
+.btn-xl{
+    font-size:1000px;
+    border-radius: 100px;
+}
+.realBody{
+    background-image: url("/static/images/plane.png");
+    background-repeat: no-repeat;
+    background-size: 2500px 3800px;
+    background-position-x: center;
+    font-family: 'Lato', sans-serif;
+}
+@keyframes onHover {
+    from {background-color: none;}
+    to {background-color: yellow;}
+}
+
+.form-title{
+    font-size: 20px;
+    font-family: 'Alata', sans-serif;
+}
+.reason-title{
+    font-size: 18px;
+    font-family: 'Alata', sans-serif;
+}
+.reason-box{
+    font-size: 15px;
+    font-family: 'Alata', sans-serif;
+    width: 100%;
+    margin: -5px 0px 10px 0px;
+}
+.selected-title{
+    font-size: 17px;
+    font-family: 'Alata', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+.current-title{
+    font-size: 17px;
+    font-family: 'Alata', sans-serif;
+    padding: 0px;
+    margin: 0px;
+}

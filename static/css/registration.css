@@ -1,0 +1,65 @@
+body{
+    background-image: url('/static/images/background4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    padding: 0px;
+    margin: 0px;
+}
+form{
+    background-color: #2C3E50;
+    position: absolute;
+    top: 130px;
+    right: auto;
+    left: calc(50% - 160px);
+    border-radius: 15px;
+    opacity: .90;
+    margin: 0px auto 0px auto;
+    padding: 25px;
+    width: 320px;
+    color: #566573;
+    font-family: 'Alata', sans-serif;
+}
+input{
+    width: 100%;
+    padding: 5px 10px;
+    margin: 0px 0px 20px 0px;
+    border-radius: 0px;
+    border-color: #2C3E50;
+    border-radius: 8px;
+    color: black;
+    background-color: #566573 !important;
+}
+::placeholder{
+    color: black;
+}
+input:focus{
+    background-color: #566573;
+}
+input:active{
+    background-color: #566573;
+}
+.title {
+    color: #D7DBDD;
+    font-family: 'Alata', sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+}
+.register-button{
+    font-size: 11px;
+    text-decoration: underline;
+    color: #D7DBDD;
+    width: 100%;
+    font-family: 'Alata', sans-serif;
+}
+.sign-in-button{
+    font-size: 11px;
+    color: #D7DBDD;
+    text-decoration: underline;
+    width: 100%;
+    font-family: 'Alata', sans-serif;
+}
+.acc-button{
+    font-family: 'Alata', sans-serif !important;
+}

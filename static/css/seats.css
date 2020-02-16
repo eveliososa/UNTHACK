@@ -1,0 +1,12 @@
+.First-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+body{
+    font-family: helvetica, Arial, sans-serif;
+}
+.firstClass {
+    background-image: url('/static/images/grey-seat.png');
+
+}

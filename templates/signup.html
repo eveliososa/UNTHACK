@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% from 'macros.html' import render_field %}
+
+<!-- title for page -->
+{% block title %}Create An Account{% endblock %}
+
+<!-- add to head -->
+{% block head %}
+    <!-- css for this page -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/registration.css')}}">
+{% endblock %}
+
+<!-- content to add to layout -->
+{% block content %}
+    <form class="form" method="POST">
+        <p class="title">Create an account</p>
+        {{ form.hidden_tag() }}
+        {% for field in form %}
+            {{ render_field(field) }}
+        {% endfor %}
+        <div class="container">
+            <div class="row">
+                <div class="col-6 text-left">
+                    <a href="{{ url_for('login')}}" role="button" class="btn btn-sm btn-link mt-2 sign-in-button">Log in instead.</a>
+                </div>
+                <div class="col-6 text-right">
+                    <button type="submit" id="submit" class="btn btn-success mt-1 acc-button">Sign Up!</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,97 @@
+.navigation-container {
+    width: 100%;
+    height: 60px;
+    display: grid;
+    position: fixed;
+    grid-template-columns: 20% 80%;
+    z-index: 1000 !important;
+    padding-top: 15px;
+    margin: 0px;
+}
+.brand-container{
+    width: 100%;
+    padding-top: 15px;
+}
+.brand-name{
+    color: #1B2631;
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    padding: 10px;
+    margin: 0px;
+}
+.brand-name:hover{
+    text-decoration: none;
+    color: #17202A;
+}
+.button-container{ width: 100%; }
+.open-button{
+    font-size: 35px;
+    position: absolute;
+    left: 13px;
+    top: 27px;
+    color: #1B2631;
+}
+.button:hover{
+    text-decoration: none;
+    color: #17202A;
+}
+.navigation-popup{
+    display: none;
+    position: fixed;
+    opacity: .97;
+    width: 70%;
+    max-width: 275px;
+    left: 0;
+    right: 0;
+    background-color: #1B2631;
+    padding-bottom: 20px;
+    z-index: 1005 !important;
+    border-bottom-right-radius: 10px;
+}
+.button-close-container{ padding: 40px 0px; }
+.close-button{
+    position: absolute;
+    font-size: 35px;
+    top: 27px;
+    left: 15px;
+    color: white;
+}
+.navigation-link{
+    display: block;
+    width: 75%;
+    font-size: 23px;
+    font-weight: 500;
+    margin: 10px 17.5% 10px 7.5%;
+    padding: 8px 10px;
+    color: white;
+    font-family: 'Alata', sans-serif;
+}
+.navigation-link:hover{
+    text-decoration: none;
+    color: #F8F9F9;
+}
+.line{
+    width: 85%;
+    margin: auto;
+    color: white;
+    background-color: white;
+}
+.login-button{
+    display: block !important;
+    text-align: center;
+    margin: 40px auto 0px auto;
+    width: 120px;
+    padding: 10px;
+    font-size: 18px;
+    font-family: 'Alata', sans-serif;
+}
+.signup-button{
+    display: block !important;
+    text-align: center;
+    margin: 20px auto 40px auto;
+    width: 200px;
+    padding: 10px;
+    font-size: 18px;
+    font-family: 'Alata', sans-serif;
+}
+

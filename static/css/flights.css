@@ -1,0 +1,116 @@
+.title{
+    font-size: 25px;
+    font-family: 'Alata', sans-serif;
+    padding: 110px 0px 10px 0px;
+}
+.date{
+    font-size: 15px;
+    font-family: 'Alata', sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+.symbols{
+    font-size: 13px;
+    font-family: 'Alata', sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+.navigation-container {
+    background-color: white !important;
+    height: 100px !important;
+}
+.title{
+    color: black;
+    font-family: 'Alata', sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+}
+.wrapper{
+    display: flex;
+    width: 360px;
+    margin-left: calc(50% - 180px);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.wrapper .qr_code{
+    width: 25%;
+    background: #0e70ad;
+    padding: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    position: relative;
+}
+.wrapper .qr_code img{
+    display: block;
+    height: 80px;
+    margin-left: 1px;
+    margin-top: 4px;
+}
+.wrapper .content{
+    width: 75%;
+    background: #BDC3C7;
+    padding: 15px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.wrapper .content .location{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.wrapper .content .location h1{
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px;
+    color: #252525;
+    font-family: 'Alata', sans-serif;
+}
+.wrapper .content .location p,
+.wrapper .content .info p{
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+    color: #797D7F;
+    font-family: 'Alata', sans-serif;
+}
+.wrapper .path img{
+    width: auto;
+    display: block;
+    height: 30px;
+}
+.wrapper .content .location .fas{
+    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Alata', sans-serif;
+}
+.wrapper .content .info{
+    display: flex;
+    justify-content: space-between;
+}
+.wrapper .content .info h4{
+    text-transform: uppercase;
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+    margin-top: 4px;
+    font-weight: 700;
+    font-family: 'Alata', sans-serif;
+}
+.wrapper .qr_code:before,
+.wrapper .qr_code:after{
+    content: "";
+    position: absolute;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+}
+.wrapper .qr_code:before{
+    top: -30px;
+}
+.wrapper .qr_code:after{
+    bottom: -30px;
+}

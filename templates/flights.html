@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+<!-- title for page -->
+{% block title %}Flights{% endblock %}
+
+<!-- add to head -->
+{% block head %}
+    <!-- css for this page -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/flights.css')}}">
+{% endblock %}
+
+<!-- content to add to layout -->
+{% block content %}
+    <h1 class="title text-center">Flights</h1>
+    <p class="date text-center">{{ date }}</p>
+    <p class="symbols text-center">{{ flight_data[0][1][0] }} - {{ flight_data[0][2][0] }}</p>
+    {% for x in flight_data %}
+    <div class="wrapper shadow">
+        <div class="qr_code">
+            <a href="/{{x[0]}}/{{date}}/{{x[1][0]}}/{{x[2][0]}}/{{x[5]}}/{{x[6]}}/{{x[-1][0]}}">
+                <img src="/static/images/plus.png" alt="QR_code">
+            </a>
+            </div>
+        <div class="content">
+            <div class="location">
+                <div class="item">
+                    <h1>{{ x[1][0] }}</h1>
+                    <p>{{ x[5] }}</p>
+                </div>
+                <div class="path">
+                    <img src="/static/images/logo.png" alt="logo">
+                </div>
+                <div class="item">
+                    <h1>{{ x[2][0] }}</h1>
+                    <p>{{ x[6] }}</p>
+                </div>
+            </div>
+            <div class="info">
+                <div class="item">
+                    <h4>Flight Number</h4>
+                    <p>{{ x[0] }}</p>
+                </div>
+                <div class="item">
+                    <h4>Model</h4>
+                    <p>{{ x[-1][0] }}</p>
+                </div>
+                <div class="item">
+                    <h4>Duration</h4>
+                    <p>{{ x[4][0] }}h {{ x[4][1] }}m</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
+
+
+

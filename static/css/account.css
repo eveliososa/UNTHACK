@@ -1,0 +1,49 @@
+body{
+    background-image: url('/static/images/background4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    padding: 0px;
+    margin: 0px;
+}
+.account-container{
+    background-color: #17202A;
+    position: absolute;
+    top: 130px;
+    right: auto;
+    left: calc(50% - 160px);
+    border-radius: 15px;
+    opacity: .90;
+    margin: 0px auto 0px auto;
+    padding: 25px;
+    width: 320px;
+    color: #D7DBDD;
+    font-family: 'Alata', sans-serif;
+}
+.title{
+    font-size: 25px;
+    font-family: 'Alata', sans-serif;
+    padding: 10px 0px 10px 0px;
+}
+.name{
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+    font-family: 'Alata', sans-serif;}
+.user{
+    margin: -2px 0px 0px 0px;
+    padding: 0px;
+    font-size: 15px;
+    font-family: 'Alata', sans-serif;}
+.miles{
+    margin: 7px 0px 0px 0px;
+    padding: 0px;
+    font-size: 16px;
+    font-family: 'Alata', sans-serif;
+}
+.buy-miles{
+    font-size: 17px;
+    margin: 20px auto 10px auto;
+    font-family: 'Alata', sans-serif;
+}

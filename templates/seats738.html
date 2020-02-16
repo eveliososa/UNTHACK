@@ -1,0 +1,255 @@
+{% extends 'layout.html' %}
+
+{% from 'macros.html' import render_field %}
+
+<!-- title for page -->
+{% block title %}Seats{% endblock %}
+
+<!-- add to head -->
+{% block head %}
+    <!-- css for this page -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/seatstwo.css')}}">
+{% endblock %}
+
+<!-- content to add to layout -->
+{% block content %}
+<div style="height: 100px; background-color: white; width: 100%;"></div>
+<h1 class="title-of-page">Seat Selector</h1>
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a id="legendButton" onclick="showLegend()" class="btn btn-outline-info" style="margin: 15px auto;" href="#">Legend</a>
+    </li>
+</ul>
+<img style="display:none;" class="legend" src= "/static/images/legend.png" id="legend">
+
+
+<div class="realBody" style="color: white; padding-top: 270px; padding-bottom: 100px;" id="bg">
+    <div style="color: white; font-size: 50px;" class="firstClass" id="firstClass">
+        <div>
+            <h1>A</h1>
+        </div>
+        <div>
+            <h1>B</h1>
+        </div>
+        <div>
+            <h1></h1>
+        </div>
+        <div>
+            <h1>C</h1>
+        </div>
+        <div>
+            <h1>D</h1>
+        </div>
+    </div>
+    <div style="color: white; font-size: 50px;" class="economy" id="economy">
+        <div>
+            <h1>A</h1>
+        </div>
+        <div>
+            <h1>B</h1>
+        </div>
+        <div>
+            <h1>C</h1>
+        </div>
+        <div>
+            <h1></h1>
+        </div>
+        <div>
+            <h1>D</h1>
+        </div>
+        <div>
+            <h1>E</h1>
+        </div>
+        <div>
+            <h1>F</h1>
+        </div>
+    </div>
+</div>
+<div data-target=".bd-example-modal-xl" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div style="width: 80%; margin-left: 10%; margin-right: 10%;" class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title form-title" id="exampleModalCenterTitle">Seat Change Request</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    <label class="reason-title" for="reason">Explain reason for seat change below.</label><br>
+                    <textarea class="reason-box" id="Reason" placeholder="Enter Reason Here"></textarea>
+                    <label class="selected-title" id="selectedSeat" for="selectedSeat">Selected Seat: </label><br>
+                    <label class="current-title" id="currentSeat" for="currentSeat">Current Seat: {{ seat_number }}</label><br>
+                    <div class="modal-footer">
+                        <div>
+                            <button style="font-size: 20px;" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                        <button id="submitButton" style="font-size: 20px;" type="button" class="btn btn-success">Save changes</button>
+                    </div>
+                </form>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onload = firstClassSeatPopulator()
+    function firstClassSeatPopulator() {
+        var column = ['A', 'B', ' ', 'C', 'D']
+        var num = 1;
+        for (i = 0; i < 4; i++) {
+            for (j = 0; j < 5; j++) {
+                var seat = document.createElement("div");
+                document.getElementById("firstClass").appendChild(seat);
+                if (j == 2) {
+
+                    seat.setAttribute("id", num);
+                    var number = document.createElement("h1");
+                    number.id = num;
+                    document.getElementById(num).style.fontSize = '50%';
+                    document.getElementById(num).appendChild(number);
+                    document.getElementById(num).innerHTML = num;
+                    document.getElementById(num).style.textAlign = 'center';
+
+                    num = num + 1;
+
+                    continue;
+                }
+                var S_num = i + 1;
+                var seatNumber = S_num + column[j];
+                seat.setAttribute("id", seatNumber);
+                seat.setAttribute("onClick", "eventListener(this.id)")
+                seed = Math.floor(Math.random() * 4);
+                switch (seed) {
+                    case 0:
+                        var seatImage = document.createElement("img");
+                        seatImage.src = ("/static/images/firstclassgrey.png");
+                        document.getElementById(seatNumber).appendChild(seatImage)
+                        seatImage.setAttribute("class", "seatImage")
+
+                        break;
+                    case 1:
+                        var seatImage = document.createElement("img");
+                        seatImage.src = ("/static/images/firstclassblue.png");
+                        document.getElementById(seatNumber).appendChild(seatImage)
+                        seatImage.setAttribute("class", "seatImage")
+                        break;
+                    case 2:
+                        var seatImage = document.createElement("img");
+                        seatImage.src = ("/static/images/firstclassgreen.png");
+                        document.getElementById(seatNumber).appendChild(seatImage)
+                        seatImage.setAttribute("class", "seatImage")
+                        break;
+                    case 3:
+                        var seatImage = document.createElement("img");
+                        seatImage.src = ("/static/images/firstclassgrey.png");
+                        document.getElementById(seatNumber).appendChild(seatImage)
+                        seatImage.setAttribute("class", "seatImage")
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+    window.onload = economyClassSeatPopulator()
+    function economyClassSeatPopulator() {
+        var column = ['A', 'B', 'C', ' ', 'D', 'E', 'F']
+        var num = 7;
+        for (i = 7; i < 39; i++) {
+            for (j = 0; j < 7; j++) {
+                var seat = document.createElement("div");
+                document.getElementById("economy").appendChild(seat);
+                if (j == 3) {
+
+                    seat.setAttribute("id", num);
+                    var number = document.createElement("h1");
+                    number.id = num;
+                    document.getElementById(num).style.fontSize = '60%';
+                    document.getElementById(num).appendChild(number);
+                    document.getElementById(num).innerHTML = num;
+                    document.getElementById(num).style.textAlign = 'center';
+                    document.getElementById(num).style.marginTop = "20px";
+                    num = num + 1;
+
+                    continue;
+                }
+                if ((i == 8 || i == 21) && (j == 0 || j == 6)) {
+                    var e = num + "Exit";
+                    seat.setAttribute("id", e);
+                    var exit = document.createElement("h1");
+                    exit.id = "Exit";
+                    document.getElementById(e).style.fontSize = '35%';
+                    document.getElementById(e).style.color = 'red';
+                    document.getElementById(e).appendChild(exit);
+                    document.getElementById(e).innerHTML = "EXIT";
+                    document.getElementById(e).style.textAlign = 'center';
+                    document.getElementById(e).style.marginTop = "20px";
+                    continue;
+                }
+
+                var S_num = i + 1;
+                var seatNumber = S_num + column[j];
+                seat.setAttribute("id", seatNumber);
+                seed = Math.floor(Math.random() * 4);
+                switch (seed) {
+                    case 0:
+                        var seatImage = document.createElement("img");
+                        seatImage.src = ("/static/images/grey-seat.png");
+                        document.getElementById(seatNumber).appendChild(seatImage)
+                        seatImage.setAttribute("class", "seatImage2")
+
+                        break;
+                    case 1:
+                        var seatImage = document.createElement("img");
+                        seatImage.src = ("/static/images/blue-seat.png");
+                        document.getElementById(seatNumber).appendChild(seatImage)
+                        seatImage.setAttribute("class", "seatImage2")
+                        break;
+                    case 2:
+                        var seatImage = document.createElement("img");
+                        seatImage.src = ("/static/images/green-seat.png");
+                        document.getElementById(seatNumber).appendChild(seatImage)
+                        seatImage.setAttribute("class", "seatImage2")
+                        break;
+                    case 3:
+                        var seatImage = document.createElement("img");
+                        seatImage.src = ("/static/images/grey-seat.png");
+                        document.getElementById(seatNumber).appendChild(seatImage)
+                        seatImage.setAttribute("class", "seatImage2")
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+    function eventListener(seatNumber, currentSeat) {
+            $('#myModal').modal('show');
+            document.getElementById("selectedSeat").innerHTML = ("Selected Seat: " + seatNumber);
+            document.getElementById("currentSeat").innerHTML = ("Current Seat: " + currentSeat);
+            document.getElementById("submitButton").onclick = function(){submitRequest(currentSeat, seatNumber)}
+    }
+    function submitRequest(current, selected){
+           var submitedArray = []
+           reason = document.getElementById("Reason").value;
+           $('#myModal').modal('hide')
+           submitedArray.push(current,selected,reason)
+           console.log(submitedArray)
+    }
+    function showLegend() {
+            document.getElementById("legend").style.opacity = "100%";
+            document.getElementById("legendButton").onclick = function(){closeLegend()}
+
+    }
+    function closeLegend(){
+            document.getElementById("legend").style.opacity = "0%";
+            document.getElementById("legendButton").onclick = function(){showLegend()}
+    }
+</script>
+
+{% endblock %}

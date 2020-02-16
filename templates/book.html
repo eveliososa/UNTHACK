@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+<!-- title for page -->
+{% block title %}Flight Search{% endblock %}
+
+<!-- add to head -->
+{% block head %}
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/book.css')}}">
+    <!-- Calender CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+{% endblock %}
+
+<!-- content to add to layout -->
+{% block content %}
+
+    <!-- SEARCH FORM-->
+    <form class="form-container" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="date-container">
+            <p class="form-labels">Date:</p>
+            {{ form.date(class='date form-control', value='02/16/2020') }}
+        </div>
+        <div class="origin-container">
+            <p class="form-labels">From:</p>
+            {{ form.origin(class='origin form-control', list='airports-from') }}
+            <datalist id="airports-from">
+                {% for i in range(num_of_airports) %}
+                <option value='{{ symbol_list[i] }}'>{{ airport_list[i] }}</option>
+                {% endfor %}
+            </datalist>
+        </div>
+        <div class="destination-container">
+            <p class="form-labels">To:</p>
+            {{ form.destination(class='destination form-control', list='airports-to') }}
+            <datalist id="airports-to">
+                {% for i in range(num_of_airports) %}
+                <option value='{{ symbol_list[i] }}'>{{ airport_list[i] }}</option>
+                {% endfor %}
+            </datalist>
+        </div>
+        {{ form.submit(class='btn btn-outline-success search') }}
+    </form>
+
+    <!-- CALENDER JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+    $(function() {
+        $('input[name="date"]').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 1901,
+            maxYear: parseInt(moment().format('YYYY'),10)
+        });
+    });
+    setTimeout(function(){
+        $('.loading-container').remove();
+    }, 1000);
+    </script>
+{% endblock %}

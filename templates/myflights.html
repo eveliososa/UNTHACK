@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+<!-- title for page -->
+{% block title %}Flights{% endblock %}
+
+<!-- add to head -->
+{% block head %}
+    <!-- css for this page -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/flights.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myflights.css')}}">
+{% endblock %}
+
+<!-- content to add to layout -->
+{% block content %}
+    <h1 class="title text-center">My Flights</h1>
+    {% for x in stream %}
+    <div class="wrapper shadow">
+        <div class="qr_code">
+            <a href="/remove/{{x.flight_number}}">
+                <img src="/static/images/minus.png" alt="QR_code">
+            </a>
+            </div>
+        <div class="content">
+            <div class="location">
+                <div class="item">
+                    <h1>{{ x.origin }}</h1>
+                    <p>{{ x.departure_time }}</p>
+                </div>
+                <div class="path">
+                    <img src="/static/images/logo.png" alt="logo">
+                </div>
+                <div class="item">
+                    <h1>{{ x.destination }}</h1>
+                    <p>{{ x.arrival_time }}</p>
+                </div>
+            </div>
+            <div class="info">
+                <div class="item">
+                    <h4>Flight Number</h4>
+                    <p>{{ x.flight_number }}</p>
+                </div>
+                <div class="item">
+                    <h4>Model</h4>
+                    <p>{{ x.airplane_model }}</p>
+                </div>
+                <div class="item">
+                    <h4>Seat</h4>
+                    <p>{{ x.seat_number }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="links-container">
+        <a class="change-seats btn btn-primary btn-sm shadow" href="/flight/seats/{{x.flight_number}}/{{x.seat_number}}">Change Seats</a>
+    </div>
+    {% endfor %}
+{% endblock %}

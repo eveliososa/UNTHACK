@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+<!-- title for page -->
+{% block title %}My Account{% endblock %}
+
+<!-- add to head -->
+{% block head %}
+    <!-- css for this page -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/account.css')}}">
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+<!-- content to add to layout -->
+{% block content %}
+    <div class="account-container">
+        <h1 class="title text-center">My Account</h1>
+        <p class="name">{{ first_name }} {{ last_name }}</p>
+        <p class="user">{{ username }} &#xb7; AAdvantage Member</p>
+        <p class="miles">Award Miles: {{ miles }}</p>
+        <button type="button" class="btn btn-success buy-miles">Buy Miles</button>
+    </div>
+{% endblock %}
