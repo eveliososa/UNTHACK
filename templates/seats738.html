@@ -95,8 +95,10 @@
 </div>
 
 <script>
+    var seat_num = "{{ seat_number }}"
     window.onload = firstClassSeatPopulator()
     function firstClassSeatPopulator() {
+
         var column = ['A', 'B', ' ', 'C', 'D']
         var num = 1;
         for (i = 0; i < 4; i++) {
@@ -105,13 +107,9 @@
                 document.getElementById("firstClass").appendChild(seat);
                 if (j == 2) {
 
-                    seat.setAttribute("id", num);
+                    seat.setAttribute("id", num + "empty");
                     var number = document.createElement("h1");
-                    number.id = num;
-                    document.getElementById(num).style.fontSize = '50%';
-                    document.getElementById(num).appendChild(number);
-                    document.getElementById(num).innerHTML = num;
-                    document.getElementById(num).style.textAlign = 'center';
+
 
                     num = num + 1;
 
@@ -120,7 +118,7 @@
                 var S_num = i + 1;
                 var seatNumber = S_num + column[j];
                 seat.setAttribute("id", seatNumber);
-                seat.setAttribute("onClick", "eventListener(this.id)")
+                seat.setAttribute("onClick", "eventListener(this.id, seat_num )")
                 seed = Math.floor(Math.random() * 4);
                 switch (seed) {
                     case 0:
@@ -128,6 +126,9 @@
                         seatImage.src = ("/static/images/firstclassgrey.png");
                         document.getElementById(seatNumber).appendChild(seatImage)
                         seatImage.setAttribute("class", "seatImage")
+                        var state = document.createElement("a");
+                        state.id = seed
+                        document.getElementById(seatNumber).appendChild(state)
 
                         break;
                     case 1:
@@ -135,18 +136,27 @@
                         seatImage.src = ("/static/images/firstclassblue.png");
                         document.getElementById(seatNumber).appendChild(seatImage)
                         seatImage.setAttribute("class", "seatImage")
+                        var state = document.createElement("a");
+                        state.id = seed
+                        document.getElementById(seatNumber).appendChild(state)
                         break;
                     case 2:
                         var seatImage = document.createElement("img");
                         seatImage.src = ("/static/images/firstclassgreen.png");
                         document.getElementById(seatNumber).appendChild(seatImage)
                         seatImage.setAttribute("class", "seatImage")
+                        var state = document.createElement("a");
+                        state.id = seed
+                        document.getElementById(seatNumber).appendChild(state)
                         break;
                     case 3:
                         var seatImage = document.createElement("img");
                         seatImage.src = ("/static/images/firstclassgrey.png");
                         document.getElementById(seatNumber).appendChild(seatImage)
                         seatImage.setAttribute("class", "seatImage")
+                        var state = document.createElement("a");
+                        state.id = seed
+                        document.getElementById(seatNumber).appendChild(state)
                         break;
 
                     default:
@@ -154,15 +164,25 @@
                 }
             }
         }
+
+        document.getElementById("1empty").innerHTML = "1";
+        document.getElementById("3empty").innerHTML = "3";
+        document.getElementById("4empty").innerHTML = "4";
+        document.getElementById("2empty").innerHTML = "2";
+        document.getElementById("2empty").style.textAlign = "center";
+        document.getElementById("1empty").style.textAlign = "center"
+        document.getElementById("3empty").style.textAlign = "center"
+        document.getElementById("4empty").style.textAlign = "center";
     }
     window.onload = economyClassSeatPopulator()
     function economyClassSeatPopulator() {
         var column = ['A', 'B', 'C', ' ', 'D', 'E', 'F']
         var num = 7;
-        for (i = 7; i < 39; i++) {
+        for (i = 6; i < 39; i++) {
             for (j = 0; j < 7; j++) {
                 var seat = document.createElement("div");
                 document.getElementById("economy").appendChild(seat);
+                seat.setAttribute("onClick", "eventListener(this.id, seat_num)")
                 if (j == 3) {
 
                     seat.setAttribute("id", num);
@@ -201,6 +221,9 @@
                         seatImage.src = ("/static/images/grey-seat.png");
                         document.getElementById(seatNumber).appendChild(seatImage)
                         seatImage.setAttribute("class", "seatImage2")
+                        var state = document.createElement("a");
+                        state.id = seed
+                        document.getElementById(seatNumber).appendChild(state)
 
                         break;
                     case 1:
@@ -208,18 +231,27 @@
                         seatImage.src = ("/static/images/blue-seat.png");
                         document.getElementById(seatNumber).appendChild(seatImage)
                         seatImage.setAttribute("class", "seatImage2")
+                        var state = document.createElement("a");
+                        state.id = seed
+                        document.getElementById(seatNumber).appendChild(state)
                         break;
                     case 2:
                         var seatImage = document.createElement("img");
                         seatImage.src = ("/static/images/green-seat.png");
                         document.getElementById(seatNumber).appendChild(seatImage)
                         seatImage.setAttribute("class", "seatImage2")
+                        var state = document.createElement("a");
+                        state.id = seed
+                        document.getElementById(seatNumber).appendChild(state)
                         break;
                     case 3:
                         var seatImage = document.createElement("img");
                         seatImage.src = ("/static/images/grey-seat.png");
                         document.getElementById(seatNumber).appendChild(seatImage)
                         seatImage.setAttribute("class", "seatImage2")
+                        var state = document.createElement("a");
+                        state.id = seed
+                        document.getElementById(seatNumber).appendChild(state)
                         break;
 
                     default:
@@ -227,27 +259,76 @@
                 }
             }
         }
+        document.getElementById(seat_num).firstChild.src = "/static/images/red-seat.png"
     }
     function eventListener(seatNumber, currentSeat) {
+            state = document.getElementById(seatNumber).lastChild.id;
+            if(state == 0 || state == 3){
+                alert("Seat Number: " + seatNumber + " is taken")
+
+            }
+            else{
             $('#myModal').modal('show');
             document.getElementById("selectedSeat").innerHTML = ("Selected Seat: " + seatNumber);
-            document.getElementById("currentSeat").innerHTML = ("Current Seat: " + currentSeat);
-            document.getElementById("submitButton").onclick = function(){submitRequest(currentSeat, seatNumber)}
+            document.getElementById("currentSeat").innerHTML = ("Current Seat: " + seat_num);
+            document.getElementById("submitButton").onclick = function(){submitRequest(currentSeat, seatNumber, state)}
+            }
     }
-    function submitRequest(current, selected){
+    function submitRequest(current, selected, state){
            var submitedArray = []
+           var firstClass
+           var canBeinFirstClass
+           var type
+           console.log(selected)
+           var firstClassSeats = ["1A", "2A", "3A", "4A", "1B", "2B", "3B", "4B", "1C", "2C", "3C", "4C", "1D", "2D", "3D", "4D"]
+           for(var i = 0; i < 17; i++){
+            if(selected == firstClassSeats[i]){
+                firstClass = true;
+                console.log("firstclass")
+                type = 1
+
+            }
+            else if(type !=1){
+             firstClass = false
+             console.log("not first class")
+            }
+            }
+            for(var j = 0; j < 17; j++){
+                if('{{seat_number}}' == firstClassSeats[i]){
+                    canBeInFirstClass = true;
+                    console.log("can be in firstclass")
+                }
+
+                else{
+                   canBeinFirstClass = false;
+                   console.log("Can not be in first class")
+                }
+                }
+
+
+
+           if(state == 2 && firstClass == false || state == 2 && canBeinFirstClass == true ){
+            document.getElementById(selected).firstChild.src = "/static/images/red-seat.png"
+            document.getElementById(current).firstChild.src = "/static/images/green-seat.png"
+            alert("Seat moved from: " + current + " to seat: " + selected)
+            seat_num = selected
+
+           }
+           else{
+            alert("I'm sorry you can not move to first class")
+           }
            reason = document.getElementById("Reason").value;
            $('#myModal').modal('hide')
            submitedArray.push(current,selected,reason)
            console.log(submitedArray)
     }
     function showLegend() {
-            document.getElementById("legend").style.opacity = "100%";
+            document.getElementById("legend").style.display = "block";
             document.getElementById("legendButton").onclick = function(){closeLegend()}
 
     }
     function closeLegend(){
-            document.getElementById("legend").style.opacity = "0%";
+            document.getElementById("legend").style.display = "none";
             document.getElementById("legendButton").onclick = function(){showLegend()}
     }
 </script>
